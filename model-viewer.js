@@ -178,8 +178,8 @@ AFRAME.registerComponent('model-viewer', {
     backgroundEl.setAttribute('geometry', {primitive: 'sphere', radius: 65});
     backgroundEl.setAttribute('material', {
       shader: 'background-gradient',
-      colorTop: '#37383c',
-      colorBottom: '#757575',
+      colorTop: '#CCCCFF',
+      colorBottom: '#40E0D0',
       side: 'back'
     });
     backgroundEl.setAttribute('hide-on-enter-ar', '');
@@ -217,7 +217,7 @@ AFRAME.registerComponent('model-viewer', {
     this.el.appendChild(sceneLightEl);
 
     reticleEl.setAttribute('gltf-model', '#reticle');
-    reticleEl.setAttribute('scale', '0.8 0.8 0.8');
+    reticleEl.setAttribute('scale', '0.4 0.4 0.4');
     reticleEl.setAttribute('ar-hit-test', {targetEl: '#modelPivot'});
     reticleEl.setAttribute('visible', 'false');
 
@@ -254,9 +254,11 @@ AFRAME.registerComponent('model-viewer', {
     modelPivotEl.appendChild(arShadowEl);
 
     titleEl.id = 'title';
-    titleEl.setAttribute('text', 'value: ' + this.data.title + '; width: 6');
+    titleEl.setAttribute('text', 'value: ' + this.data.title + '; width: 3');
     titleEl.setAttribute('hide-on-enter-ar', '');
+    titleEl.setAttribute
     titleEl.setAttribute('visible', 'false');
+   
 
     this.containerEl.appendChild(titleEl);
 
@@ -271,7 +273,7 @@ AFRAME.registerComponent('model-viewer', {
       shadowCameraRight: 5,
       shadowCameraBottom: -5,
       shadowCameraTop: 5,
-      intensity: 0.5,
+      intensity: 1.4,
       target: 'modelPivot'
     });
 
@@ -484,7 +486,7 @@ AFRAME.registerComponent('model-viewer', {
     var gltfObject = modelEl.getObject3D('mesh');
 
     // Reset position and scales.
-    modelEl.object3D.position.set(0, 0, 0);
+    modelEl.object3D.position.set(0, -.025, .25);
     modelEl.object3D.scale.set(1.0, 1.0, 1.0);
     this.cameraRigEl.object3D.position.z = 3.0;
 
@@ -512,10 +514,12 @@ AFRAME.registerComponent('model-viewer', {
     shadowEl.object3D.position.z = -center.z;
     shadowEl.object3D.position.x = -center.x;
 
-    titleEl.object3D.position.x = 2.2 - center.x;
+    titleEl.object3D.position.x = 2.2 - center.x-.5;
     titleEl.object3D.position.y = size.y + 0.5;
     titleEl.object3D.position.z = -2;
     titleEl.object3D.visible = true;
+    titleEl.object3D.visible = true;
+
 
     modelEl.object3D.position.x = -center.x;
     modelEl.object3D.position.y = -center.y;
